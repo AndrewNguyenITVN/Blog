@@ -19,8 +19,14 @@ export class User {
     @Column({ unique: true, length: 100 })
     email: string;
 
-    @Column({ name: 'password_hash', length: 255 })
-    passwordHash: string;
+    @Column({ name: 'password_hash', length: 255, nullable: true })
+    passwordHash?: string;
+
+    @Column({ name: 'google_id', length: 255, nullable: true, unique: true })
+    googleId?: string;
+
+    @Column({ length: 20, default: 'local' })
+    provider: string;
 
     @Column({ name: 'full_name', length: 100, nullable: true })
     fullName?: string;
